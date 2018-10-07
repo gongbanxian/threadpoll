@@ -4,14 +4,13 @@ CLIBS= -lpthread
 
 OBJECT = main.o threadpool.o
 
+all : threadpool_test
+
 threadpool_test : $(OBJECT)
 	$(CC) $(CFLAG) -o threadpool_test $(OBJECT) $(CLIBS)
 
-main.o : main.c
-	$(CC) $(CFLAG) -c main.c
-
-threadpool.o : threadpool.c
-	$(CC) $(CFLAG) -c threadpool.c
+.c.o : 
+	$(CC) $(CFLAG) -c -o $*.o $<
 
 clean:
 	rm -f threadpool_test $(OBJECT)
